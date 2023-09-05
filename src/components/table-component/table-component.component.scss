@@ -1,0 +1,88 @@
+.pointer {
+  cursor: pointer;
+}
+
+//mobile
+@media screen and (max-device-width: 1179px) {
+  .phone {
+    width: 100%;
+    height: 100%;
+    border: 2px solid gray;
+    background-color: white;
+  }
+
+  .header {
+    margin-top: 0%;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+  }
+}
+
+//desktop
+@media screen and (min-device-width: 1200px) {
+  .phone {
+    width: 26%;
+    height: 80%;
+    box-shadow: 0 0 5px blue, 0 0 25px blue;
+    position: absolute;
+    top: 10%;
+    left: 37%;
+    border-radius: 30px;
+    border: 15px solid black;
+    background-color: white;
+  }
+  .highlight {
+    animation: null;
+  }
+  @keyframes highlight_anim {
+    0% {
+      box-shadow: 0 0 10px blue;
+    }
+    10% {
+      box-shadow: 0 0 20px blue;
+    }
+    20% {
+      box-shadow: 0 0 30px blue;
+    }
+    30% {
+      box-shadow: 0 0 40px blue;
+    }
+    40% {
+      box-shadow: 0 0 50px blue;
+    }
+    50% {
+      box-shadow: 0 0 60px blue;
+    }
+    60% {
+      box-shadow: 0 0 50px blue;
+    }
+    70% {
+      box-shadow: 0 0 40px blue;
+    }
+    80% {
+      box-shadow: 0 0 30px blue;
+    }
+    90% {
+      box-shadow: 0 0 20px blue;
+    }
+    100% {
+      box-shadow: 0 0 10px blue;
+    }
+  }
+
+  .header {
+    top: 1.5%;
+    box-shadow: none;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0%;
+    width: 100.5%;
+  }
+}

@@ -1,0 +1,100 @@
+<div
+  class="phone"
+  id="phone1"
+  [ngStyle]="
+    isPlaying
+      ? { animation: 'highlight_anim 1s infinite' }
+      : { animation: 'null' }
+  "
+>
+  <ion-header class="header">
+    <ion-toolbar>
+      <ion-title class="ion-text-center"> Music player test task </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <ng-container
+      [matColumnDef]="column"
+      *ngFor="let column of displayedColumns"
+    >
+      <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+      <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
+    </ng-container>
+    <tr
+      mat-row
+      *matRowDef="let emprow; columns: displayedColumns"
+      (click)="start(emprow)"
+      [ngStyle]="{'color':  emprow.filename === this.activeTrack?.['filename'] ? 'blue' : 'black' }"
+      class="pointer"
+    ></tr>
+  </table>
+
+  <ion-footer *ngIf="activeTrack" class="footer">
+    <ion-toolbar color="dark">
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          {{ activeTrack["filename"] }}
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-range
+            #range
+            [(ngModel)]="progress"
+            max="100"
+            (touchend)="moveTo()"
+            (mouseup)="moveTo()"
+            class="progress"
+          >
+          </ion-range>
+        </ion-col>
+
+        <ion-col size="12" class="ion-text-center">
+          <ion-button
+            fill="clear"
+            color="light"
+            (click)="prevTrack()"
+            class="pointer"
+          >
+            <ion-icon
+              size="large"
+              slot="icon-only"
+              name="caret-back-outline"
+            ></ion-icon>
+          </ion-button>
+          <ion-button
+            fill="clear"
+            color="light"
+            (click)="togglePlayer(false)"
+            *ngIf="!isPlaying"
+            class="pointer"
+          >
+            <ion-icon size="large" slot="icon-only" name="play"></ion-icon>
+          </ion-button>
+          <ion-button
+            fill="clear"
+            color="light"
+            (click)="togglePlayer(true)"
+            *ngIf="isPlaying"
+            class="pointer"
+          >
+            <ion-icon size="large" slot="icon-only" name="pause"></ion-icon>
+          </ion-button>
+          <ion-button
+            fill="clear"
+            color="light"
+            (click)="nextTrack()"
+            class="pointer"
+          >
+            <ion-icon
+              size="large"
+              slot="icon-only"
+              name="caret-forward-outline"
+            ></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+</div>
