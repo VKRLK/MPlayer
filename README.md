@@ -1,2 +1,6 @@
-# MPlayer
- Test Task  (max 3 days)
+# MPlayer Test Task
+
+
+Just run following commands in terminal while in working directory: 
+npm i
+npm start
